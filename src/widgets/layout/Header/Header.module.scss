@@ -1,0 +1,28 @@
+.container {
+  background: lightblue;
+  display: flex;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  justify-content: center;
+}
+
+.list {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.item {
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 10px;
+  align-self: center;
+  text-align: center;
+  transition: 0.4s;
+  border: 2px solid transparent;
+
+  &:hover {
+    border: 2px solid black;
+  }
+}

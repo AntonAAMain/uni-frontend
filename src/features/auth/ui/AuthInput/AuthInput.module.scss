@@ -1,0 +1,11 @@
+.container {
+  background: lightblue;
+  border: 0;
+  padding: 10px;
+  width: 160px;
+  border-radius: 10px;
+
+  &:focus {
+    outline: none;
+  }
+}

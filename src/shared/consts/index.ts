@@ -1,0 +1,1 @@
+export const nameLolalstorage = "zxq";

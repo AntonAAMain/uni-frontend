@@ -1,0 +1,33 @@
+.container {
+  z-index: 100000;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  border-radius: 10px;
+  padding: 20px;
+  padding-right: 200px;
+  color: black;
+  font-family: "Inter";
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid gray;
+}
+
+.container_active {
+  display: flex;
+}
+
+.container_success {
+  background: #d1e7dd;
+}
+
+.container_warning {
+  background: #fff3cd;
+}
+
+.container_dangerous {
+  background: #f8d7da;
+}

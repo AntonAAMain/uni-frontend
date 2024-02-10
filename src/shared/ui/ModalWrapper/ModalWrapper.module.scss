@@ -1,0 +1,32 @@
+.container {
+  position: fixed;
+  display: none;
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5212111;
+  border-radius: 12px;
+  background: #0b0a0f5b;
+  background: #2b15855b;
+
+  backdrop-filter: blur(20px);
+}
+
+.container_active {
+  display: block;
+}
+
+.content {
+  background: linear-gradient(
+    rgba(217, 217, 217, 1) -158%,
+    rgba(217, 217, 217, 0.3) -55.77%
+  );
+  height: max-content;
+  width: max-content;
+
+  //   position: relative;
+  position: relative;
+}

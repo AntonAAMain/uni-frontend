@@ -1,0 +1,17 @@
+.modalWrapper {
+  left: 50%;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  top: 100px;
+}
+
+.container {
+  position: relative;
+  //   width: 400px;
+  //   height: 400px;
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  //   border: 2px solid green;
+}
