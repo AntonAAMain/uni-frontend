@@ -9,7 +9,7 @@ import { Top } from "./ui/Top/Top";
 import cls from "./PostModal.module.scss";
 
 export const PostModal = () => {
-  const { setIsActive, isActive } = useProfilePostModalStore();
+  const { setIsActive, isActive, mode } = useProfilePostModalStore();
 
   return (
     <ModalWrapper
@@ -20,7 +20,7 @@ export const PostModal = () => {
       <div className={cls.container}>
         <Top />
         <Body />
-        <Bottom />
+        {mode !== "view" && <Bottom />}
       </div>
     </ModalWrapper>
   );

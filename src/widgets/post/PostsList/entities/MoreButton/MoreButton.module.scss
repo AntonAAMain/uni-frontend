@@ -1,0 +1,15 @@
+.container {
+  background: lightcoral;
+  padding: 10px 40px;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px 10px lightcoral;
+  }
+
+  &:active {
+    border: 2px solid black;
+  }
+}

@@ -3,8 +3,9 @@ import { create } from "zustand";
 import { apiBase } from "@/shared/http";
 import { nameLolalstorage } from "@/shared/consts";
 import { openAlert } from "../useAlertStore";
+import { updatePosts } from "./useProfilePosts";
 
-type IMode = "create" | "edit";
+type IMode = "create" | "edit" | "view";
 
 interface StoreState {
   title: string;
@@ -66,7 +67,12 @@ export const useProfilePostModalStore = create<StoreState>()(
               state.isActive = false;
             });
             openAlert("success", "Пост был успешно создан");
+            updatePosts();
           });
+      }
+
+      else (get().mode==="edit"){
+        
       }
     },
   }))

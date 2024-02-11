@@ -5,9 +5,13 @@ import { useProfilePostModalStore } from "@/shared/zustand/profile/useProfilePos
 import cls from "./UserInfoButton.module.scss";
 
 export const UserInfoButton = () => {
-  const { setIsActive } = useProfilePostModalStore();
+  const { setIsActive, setMode, handleText, handleTitle } =
+    useProfilePostModalStore();
 
   const open = () => {
+    handleText("");
+    handleTitle("");
+    setMode("create");
     setIsActive(true);
   };
 

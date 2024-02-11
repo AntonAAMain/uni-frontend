@@ -12,7 +12,7 @@ export default function Profile() {
     <MainLayout>
       <div className={cls.container}>
         <UserInfo />
-        <PostsFilter />
+        <PostsFilter mode="my" />
         <PostsList />
       </div>
     </MainLayout>

@@ -19,7 +19,8 @@ interface StoreState {
   title: string;
   handleTitle: (text: string) => void;
 
-  getFilteredPosts: () => void;
+  getFilteredPosts: () => Promise<IPost[]>;
+  fetchPosts: () => void;
 
   curr_page: number;
   total: number;
@@ -33,7 +34,9 @@ interface StoreState {
   handleEarliestDate: () => void;
 
   mode: PostsMode;
-  setMode: (mode: PostsMode) => {};
+  setMode: (mode: PostsMode) => void;
+
+  moreHandle: () => void;
 }
 
 export const useProfilePosts = create<StoreState>()(
@@ -44,16 +47,18 @@ export const useProfilePosts = create<StoreState>()(
     title: "",
     curr_page: 1,
     total: 0,
-    isMostDisliked: false,
     isMostLiked: false,
+    isMostDisliked: false,
     isEarliestDate: false,
 
     mode: "my",
 
-    setMode: (mode: PostsMode) =>
+    setMode: (mode: PostsMode) => {
       set((state) => {
         state.mode = mode;
       }),
+        updatePosts();
+    },
 
     handleEarliestDate: () => {
       set((state) => {
@@ -62,31 +67,63 @@ export const useProfilePosts = create<StoreState>()(
     },
     handleMostDisliked: () => {
       set((state) => {
+        state.posts.sort((a, b) =>
+          !get().isMostDisliked
+            ? a.disliked_by.length - b.disliked_by.length
+            : b.disliked_by.length - a.disliked_by.length
+        );
+
         state.isMostDisliked = !get().isMostDisliked;
       });
     },
 
     handleMostLiked: () => {
       set((state) => {
+        state.posts.sort((a, b) =>
+          !get().isMostLiked
+            ? a.liked_by.length - b.liked_by.length
+            : b.liked_by.length - a.liked_by.length
+        );
         state.isMostLiked = !get().isMostLiked;
       });
     },
 
-    handleDislikes: (value: string) => {
+    fetchPosts: async () => {
+      const posts = await get().getFilteredPosts();
+
+      set((state) => {
+        state.posts = posts;
+      });
+    },
+
+    handleDislikes: async (value: string) => {
       set((state) => {
         state.dislikes = handleNumberInput(value);
+        state.curr_page = 1;
       });
+
+      get().fetchPosts();
     },
 
-    handleLikes: (value: string) => {
+    handleLikes: async (value: string) => {
       set((state) => {
         state.likes = handleNumberInput(value);
+        state.curr_page = 1;
       });
+
+      get().fetchPosts();
     },
 
-    handleTitle: (text: string) => {
+    handleTitle: async (text: string) => {
       set((state) => {
         state.title = text;
+        state.curr_page = 1;
+      });
+
+      const posts = await get().getFilteredPosts();
+
+      set((state) => {
+        state.posts = posts;
       });
     },
 
@@ -99,7 +136,7 @@ export const useProfilePosts = create<StoreState>()(
 
       const userIdString =
         get().mode === "my"
-          ? `user_id=${localStorage.getItem(nameLolalstorage)}`
+          ? `&user_id=${localStorage.getItem(nameLolalstorage)}`
           : "";
 
       const resultString =
@@ -110,8 +147,26 @@ export const useProfilePosts = create<StoreState>()(
       );
 
       set((state) => {
-        state.posts = data.data;
+        state.total = Math.ceil(data.total / 5);
+      });
+
+      return data.data;
+    },
+
+    moreHandle: async () => {
+      set((state) => {
+        state.curr_page += 1;
+      });
+
+      const appendedPosts = get().posts.concat(await get().getFilteredPosts());
+
+      set((state) => {
+        state.posts = appendedPosts;
       });
     },
   }))
 );
+
+export const updatePosts = () => {
+  useProfilePosts.getState().handleTitle("");
+};

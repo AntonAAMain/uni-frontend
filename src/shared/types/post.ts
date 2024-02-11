@@ -4,6 +4,6 @@ export interface IPost {
   text: string;
   user_id: number;
   date: Date;
-  likes: number;
-  dislikes: number;
+  liked_by: number[];
+  disliked_by: number[];
 }

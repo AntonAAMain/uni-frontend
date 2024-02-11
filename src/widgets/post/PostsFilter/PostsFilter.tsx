@@ -1,3 +1,7 @@
+import {
+  PostsMode,
+  useProfilePosts,
+} from "@/shared/zustand/profile/useProfilePosts";
 import { Date } from "./entities/Date/Date";
 import { DislikesInput } from "./entities/DislikesInput/DislikesInput";
 import { DislikesSort } from "./entities/DislikesSort/DislikesSort";
@@ -6,8 +10,19 @@ import { LikesSort } from "./entities/LikesSort/LikesSort";
 import { TitleInput } from "./entities/TitleInput/TitleInput";
 
 import cls from "./PostsFilter.module.scss";
+import { useEffect } from "react";
 
-export const PostsFilter = () => {
+interface Props {
+  mode: PostsMode;
+}
+
+export const PostsFilter = ({ mode }: Props) => {
+  const { setMode } = useProfilePosts();
+
+  useEffect(() => {
+    setMode(mode);
+  }, [mode]);
+
   return (
     <div className={cls.container}>
       <div className={cls.inputs}>
@@ -19,7 +34,6 @@ export const PostsFilter = () => {
       <div className={cls.boxes}>
         <LikesSort />
         <DislikesSort />
-        <Date />
       </div>
     </div>
   );

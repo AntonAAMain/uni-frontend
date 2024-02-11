@@ -7,7 +7,11 @@ export const Top = () => {
 
   return (
     <div className={cls.container}>
-      {mode === "create" ? "Создание поста" : `Изменение поста`}
+      {mode === "create"
+        ? "Создание поста"
+        : mode === "view"
+        ? "Просмотр поста"
+        : `Изменение поста`}
     </div>
   );
 };
