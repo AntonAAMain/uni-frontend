@@ -1,0 +1,13 @@
+.container {
+  border: 0;
+  background: lightcoral;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  &:focus {
+    outline: none;
+  }
+}

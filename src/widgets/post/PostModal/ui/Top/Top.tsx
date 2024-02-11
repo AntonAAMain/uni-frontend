@@ -1,4 +1,5 @@
 import { useProfilePostModalStore } from "@/shared/zustand/profile/useProfilePostModal";
+
 import cls from "./Top.module.scss";
 
 export const Top = () => {

@@ -46,7 +46,7 @@ export const useAuthStore = create<StoreState>()(
           password: get().password,
         });
 
-        localStorage.setItem(nameLolalstorage, get().name);
+        localStorage.setItem(nameLolalstorage, data.id);
 
         openAlert("success", "Вы успешно зашли");
         return true;

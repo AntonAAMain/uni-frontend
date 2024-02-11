@@ -1,0 +1,25 @@
+.container {
+  position: relative;
+  border: 2px solid orange;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputs {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  width: max-content;
+}
+
+.boxes {
+  position: relative;
+  width: max-content;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}

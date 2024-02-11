@@ -1,5 +1,5 @@
 import { Alert } from "@/features/Alert/Alert";
-import { PostModal } from "@/widgets/profile/PostModal/PostModal";
+import { PostModal } from "@/widgets/post/PostModal/PostModal";
 
 export const ModalsWrapper = () => {
   return (

@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  border: 3px solid lightblue;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  position: relative;
+  width: max-content;
+  align-self: flex-end;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.title {
+  border-radius: 10px;
+  border: 3px solid lightblue;
+  padding: 10px;
+  margin: 10px;
+  height: 190px;
+}
+
+.bottom {
+  position: relative;
+  display: flex;
+  width: max-content;
+  align-self: center;
+  gap: 10px;
+}
+
+.bottomPart {
+  display: flex;
+  border: 2px solid green;
+  gap: 5px;
+  width: max-content;
+  flex-direction: row;
+  align-items: center;
+}

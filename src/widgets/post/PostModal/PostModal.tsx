@@ -2,11 +2,11 @@
 
 import { useProfilePostModalStore } from "@/shared/zustand/profile/useProfilePostModal";
 import { ModalWrapper } from "@/shared/ui/ModalWrapper/ModalWrapper";
+import { Bottom } from "./Bottom/Bottom";
+import { Body } from "./Body/Body";
 import { Top } from "./ui/Top/Top";
 
 import cls from "./PostModal.module.scss";
-import { Body } from "./Body/Body";
-import { Bottom } from "./Bottom/Bottom";
 
 export const PostModal = () => {
   const { setIsActive, isActive } = useProfilePostModalStore();

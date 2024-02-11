@@ -19,11 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ModalsWrapper />
-
       <body
       // className={inter.className}
       >
+        <ModalsWrapper />
         {children}
       </body>
     </html>
