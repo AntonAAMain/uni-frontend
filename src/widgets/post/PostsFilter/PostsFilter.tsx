@@ -21,7 +21,7 @@ export const PostsFilter = ({ mode }: Props) => {
 
   useEffect(() => {
     setMode(mode);
-  }, [mode]);
+  }, []);
 
   return (
     <div className={cls.container}>

@@ -10,10 +10,6 @@ export const PostsList = () => {
   const { getFilteredPosts, posts, curr_page, total, moreHandle } =
     useProfilePosts();
 
-  useEffect(() => {
-    getFilteredPosts();
-  }, []);
-
   return (
     <div className={cn(cls.container, "defaultContainer")}>
       <div className={cls.list}>

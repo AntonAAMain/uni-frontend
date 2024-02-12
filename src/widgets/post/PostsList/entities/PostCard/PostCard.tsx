@@ -5,6 +5,7 @@ import { apiBase } from "@/shared/http";
 import { nameLolalstorage } from "@/shared/consts";
 import { useProfilePosts } from "@/shared/zustand/profile/useProfilePosts";
 import { useProfilePostModalStore } from "@/shared/zustand/profile/useProfilePostModal";
+import { Rating } from "./Rating/Rating";
 
 interface Props {
   post: IPost;
@@ -13,12 +14,13 @@ interface Props {
 export const PostCard = ({ post }: Props) => {
   const { mode: postsMode } = useProfilePosts();
 
-  const { setIsActive, setMode, handleText, handleTitle } =
+  const { setIsActive, setMode, handleText, handleTitle, setPostId } =
     useProfilePostModalStore();
 
   const openModal = () => {
     handleTitle(post.title);
     handleText(post.text);
+    setPostId(post.id);
     postsMode === "my" ? setMode("edit") : setMode("view");
     setIsActive(true);
   };
@@ -29,16 +31,8 @@ export const PostCard = ({ post }: Props) => {
       <div onClick={openModal} className={cls.title}>
         {post.title}
       </div>
-      <div className={cls.bottom}>
-        <div className={cls.bottomPart}>
-          <Image src={"/images/ui/like.png"} width={30} height={30} alt="" />{" "}
-          {post.liked_by.length}
-        </div>
-        <div className={cls.bottomPart}>
-          <Image src={"/images/ui/dislike.png"} width={30} height={30} alt="" />{" "}
-          {post.disliked_by.length}
-        </div>
-      </div>
+
+      <Rating post={post} />
     </div>
   );
 };

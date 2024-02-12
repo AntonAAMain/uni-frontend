@@ -21,6 +21,12 @@ interface StoreState {
   setMode: (mode: IMode) => void;
 
   submitHandle: () => void;
+
+  postId: number;
+  setPostId: (value: number) => void;
+
+  reset: () => void;
+  deletePost: () => void;
 }
 
 export const useProfilePostModalStore = create<StoreState>()(
@@ -29,6 +35,31 @@ export const useProfilePostModalStore = create<StoreState>()(
     handleTitle: (title: string) =>
       set((state) => {
         state.title = title;
+      }),
+
+    deletePost: async () => {
+      await apiBase
+        .post("profile/post/delete", {
+          postId: get().postId,
+        })
+        .then(() => {
+          get().reset();
+          updatePosts();
+          openAlert("success", "Пост был удален");
+        });
+    },
+
+    reset: () =>
+      set((state) => {
+        state.title = "";
+        state.text = "";
+        state.isActive = false;
+      }),
+
+    postId: 0,
+    setPostId: (value: number) =>
+      set((state) => {
+        state.postId = value;
       }),
 
     text: "",
@@ -69,10 +100,23 @@ export const useProfilePostModalStore = create<StoreState>()(
             openAlert("success", "Пост был успешно создан");
             updatePosts();
           });
-      }
-
-      else (get().mode==="edit"){
-        
+      } else if (get().mode === "edit") {
+        await apiBase
+          .patch("/profile/post/update", {
+            postId: get().postId,
+            title: get().title,
+            text: get().text,
+          })
+          .then(() => {
+            get().reset();
+            openAlert("success", "Пост был изменен!");
+          })
+          .catch(() => {
+            openAlert("dangerous", "Произошла ошибка");
+          })
+          .finally(() => {
+            updatePosts();
+          });
       }
     },
   }))

@@ -1,8 +1,12 @@
 .modalWrapper {
-  left: 50%;
   border-radius: 10px;
   transform: translateX(-50%);
+  left: 50%;
   top: 100px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 400px;
 }
 
 .container {

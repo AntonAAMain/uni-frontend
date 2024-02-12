@@ -1,0 +1,23 @@
+.container {
+  background: white;
+  width: 400px;
+  position: relative;
+  align-self: center;
+  margin-bottom: 100px;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-self: center;
+  font-size: 18px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
