@@ -21,3 +21,11 @@ a {
 .defaultContainer {
   width: 1000px;
 }
+
+.loader {
+  position: absolute;
+  width: max-content;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}

@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <AuthCheckLogin />
       {isLoading ? (
-        "Загрузка"
+        <div className={"loader"}>Загрузка</div>
       ) : (
         <MainLayout>
           <PostsFilter mode="others" />

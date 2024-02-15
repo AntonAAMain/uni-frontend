@@ -37,3 +37,7 @@ export const useUserStore = create<StoreState>()(
     },
   }))
 );
+
+export const updateUser = () => {
+  useUserStore.getState().fetchUser();
+};

@@ -8,7 +8,14 @@ export default function Register() {
   const { isLoading } = useAuthCheckStore();
 
   return (
-    <main style={{ left: "500px", position: "relative", paddingTop: "100px" }}>
+    <main
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: "100px",
+      }}
+    >
       <AuthCheck />
       {isLoading ? "Загрузка" : <RegistrationForm />}
     </main>

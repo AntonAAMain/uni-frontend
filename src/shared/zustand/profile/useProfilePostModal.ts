@@ -4,6 +4,7 @@ import { apiBase } from "@/shared/http";
 import { nameLolalstorage } from "@/shared/consts";
 import { openAlert } from "../useAlertStore";
 import { updatePosts } from "./useProfilePosts";
+import { updateUser } from "../useUserStore";
 
 type IMode = "create" | "edit" | "view";
 
@@ -46,6 +47,7 @@ export const useProfilePostModalStore = create<StoreState>()(
           get().reset();
           updatePosts();
           openAlert("success", "Пост был удален");
+          updateUser();
         });
     },
 
@@ -99,6 +101,7 @@ export const useProfilePostModalStore = create<StoreState>()(
               state.isActive = false;
             });
             openAlert("success", "Пост был успешно создан");
+            updateUser();
             updatePosts();
           });
       } else if (get().mode === "edit") {
