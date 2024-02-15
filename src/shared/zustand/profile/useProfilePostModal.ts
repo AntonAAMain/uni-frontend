@@ -69,10 +69,11 @@ export const useProfilePostModalStore = create<StoreState>()(
       }),
 
     isActive: false,
-    setIsActive: (condition: boolean) =>
+    setIsActive: (condition: boolean) => {
       set((state) => {
         state.isActive = condition;
-      }),
+      });
+    },
 
     mode: "create",
 

@@ -1,3 +1,4 @@
+import { AuthCheckLogin } from "@/features/AuthCheck/AuthCheckLogin";
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import cls from "./MainLayout.module.scss";
@@ -10,6 +11,7 @@ export const MainLayout = ({ children }: Props) => {
   return (
     <div style={{ border: "2px solid green" }} className={cls.container}>
       <Header />
+
       <div>{children}</div>
       <Footer />
     </div>

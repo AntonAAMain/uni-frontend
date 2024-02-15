@@ -24,7 +24,7 @@ export const PostModal = () => {
         {mode !== "view" && <Bottom />}
       </div>
 
-      <Comments postId={postId} />
+      {mode !== "create" && <Comments postId={postId} />}
     </ModalWrapper>
   );
 };

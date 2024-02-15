@@ -54,3 +54,7 @@ export const useCommentsStore = create<StoreState>()(
     },
   }))
 );
+
+export const updateComments = (postId: number) => {
+  useCommentsStore.getState().fetchComments(postId);
+};

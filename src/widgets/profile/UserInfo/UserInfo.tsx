@@ -1,15 +1,25 @@
 import cn from "classnames";
+import { UserInfoButton } from "./UserInfoButton/UserInfoButton";
+import { useEffect } from "react";
 
 import cls from "./UserInfo.module.scss";
-import { UserInfoButton } from "./UserInfoButton/UserInfoButton";
+import { nameLolalstorage } from "@/shared/consts";
+import { apiBase } from "@/shared/http";
+import { useUserStore } from "@/shared/zustand/useUserStore";
 
 export const UserInfo = () => {
+  const { fetchUser, user, postsLength } = useUserStore();
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   return (
     <div className={cn(cls.container, "defaultContainer")}>
       <div className={cls.info}>
-        <p>Антон</p>
-        <p>Зарегался 12.02.2024</p>
-        <p>Постов 102 штуки</p>
+        <p>{user?.name}</p>
+        <p>Зарегался {user?.register_date.slice(0, 10)}</p>
+        <p>Постов {postsLength} шт</p>
       </div>
 
       <UserInfoButton />
